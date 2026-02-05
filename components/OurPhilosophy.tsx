@@ -6,7 +6,7 @@ const philosophyCards = [
         variant: "light",
         icon: (
             <svg
-                className="absolute top-[30px] right-[35px] h-8 w-8 opacity-40"
+                className="hidden md:block absolute top-[30px] right-[35px] h-8 w-8 opacity-40"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
@@ -24,7 +24,7 @@ const philosophyCards = [
         variant: "dark",
         icon: (
             <svg
-                className="absolute top-[30px] right-[35px] h-8 w-8 opacity-60"
+                className="hidden md:block absolute top-[30px] right-[35px] h-8 w-8 opacity-60"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="white"
@@ -43,7 +43,7 @@ const philosophyCards = [
         variant: "light",
         icon: (
             <svg
-                className="absolute top-[30px] right-[35px] h-8 w-8 opacity-40"
+                className="hidden md:block absolute top-[30px] right-[35px] h-8 w-8 opacity-40"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
@@ -60,7 +60,7 @@ const philosophyCards = [
         variant: "light",
         icon: (
             <svg
-                className="absolute top-[30px] right-[35px] h-8 w-8 opacity-40"
+                className="hidden md:block absolute top-[30px] right-[35px] h-8 w-8 opacity-40"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
@@ -80,7 +80,7 @@ const philosophyCards = [
         variant: "dark",
         icon: (
             <svg
-                className="absolute top-[30px] right-[35px] h-8 w-8 opacity-60"
+                className="hidden md:block absolute top-[30px] right-[35px] h-8 w-8 opacity-60"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="white"
@@ -98,7 +98,7 @@ const philosophyCards = [
         variant: "light",
         icon: (
             <svg
-                className="absolute top-[30px] right-[35px] h-8 w-8 opacity-40"
+                className="hidden md:block absolute top-[30px] right-[35px] h-8 w-8 opacity-40"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
@@ -148,17 +148,15 @@ const OurPhilosophy = () => {
                         return (
                             <div
                                 key={card.title}
-                                className={`relative flex min-h-[320px] flex-col justify-center rounded-[40px] p-10 transition-transform duration-300 hover:-translate-y-[5px] max-sm:min-h-0 max-sm:p-[30px] ${
-                                    isDark
+                                className={`relative flex min-h-[320px] flex-col justify-center rounded-[40px] p-10 transition-transform duration-300 hover:-translate-y-[5px] max-sm:min-h-0 max-sm:p-[30px] ${isDark
                                         ? "bg-[var(--card-dark)] text-[#cbd5e1] shadow-[0_20px_40px_rgba(31,48,139,0.2)]"
                                         : "bg-[var(--card-light)] text-[var(--para-color)]"
-                                }`}
+                                    }`}
                             >
                                 {card.icon}
                                 <h3
-                                    className={`mb-[15px] font-playfair text-[24px] leading-[1.2] ${
-                                        isDark ? "text-white" : "text-[var(--blue-accent)]"
-                                    }`}
+                                    className={`mb-[15px] font-playfair text-[24px] leading-[1.2] ${isDark ? "text-white" : "text-[var(--blue-accent)]"
+                                        }`}
                                 >
                                     {card.title}
                                 </h3>

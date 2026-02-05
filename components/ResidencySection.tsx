@@ -75,7 +75,7 @@ const ResidencySection: React.FC<ResidencySectionProps> = ({
                     {features.map((feature, index) => {
                         const IconComponent = iconMap[feature.icon] || ShieldCheck;
                         return (
-                            <div key={index} className="flex flex-col md:flex-row gap-[20px] items-start text-left">
+                            <div key={index} className="flex flex-col md:flex-row gap-[20px] items-center md:items-start text-center md:text-left">
                                 <IconComponent className="text-[var(--blue-primary)] w-[24px] h-[24px] shrink-0 mt-[4px]" />
                                 <div>
                                     <h4 className="text-[var(--blue-primary)] font-playfair text-[20px] mb-[5px] font-bold">

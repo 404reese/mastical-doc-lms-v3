@@ -41,9 +41,9 @@ const footerData: {
         ],
     },
     contact: {
-        address: "123 Healing Way, Wellness City, HC 90210",
-        phone: "+1 (555) 123-4567",
-        email: "admissions@homeopathy.edu",
+        address: "101, Shivana Apartment, Mogul Ln, Mahim, Mumbai - 400016",
+        phone: "+91 93243 21819",
+        email: "academy@drgauranggaikwad.com",
     },
 };
 
