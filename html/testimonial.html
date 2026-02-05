@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testimonial Section</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #FDFBF7F2;
+            --blue-text: #1F308B;
+            --title-black: #1E293B;
+            --quote-mark: #C5A585; /* Tan color from image */
+            --font-serif: 'Playfair Display', serif;
+            --font-sans: 'Inter', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            height: 100%;
+            background-color: var(--bg-color);
+        }
+
+        /* Full Height Container */
+        .testimonial-container {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 10%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Carousel Wrapper */
+        .carousel-slide {
+            display: none;
+            max-width: 900px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .carousel-slide.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Quote Mark (The "99") */
+        .quote-icon {
+            font-family: var(--font-serif);
+            font-size: 60px;
+            color: var(--quote-mark);
+            line-height: 1;
+            margin-bottom: 20px;
+            display: inline-block;
+            font-weight: 700;
+        }
+
+        /* The Main Quote Text */
+        .testimonial-text {
+            font-family: var(--font-serif);
+            font-style: italic;
+            font-size: clamp(24px, 4vw, 44px); /* Fluid typography */
+            color: var(--blue-text);
+            line-height: 1.25;
+            margin-bottom: 50px;
+            font-weight: 400;
+        }
+
+        /* Author Information */
+        .author-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .author-img {
+            width: 85px;
+            height: 85px;
+            border-radius: 50%;
+            object-fit: cover;
+            filter: grayscale(100%); /* Grayscale like image */
+            margin-bottom: 20px;
+        }
+
+        .author-name {
+            font-family: var(--font-serif);
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--title-black);
+            margin-bottom: 8px;
+        }
+
+        .author-role {
+            font-family: var(--font-sans);
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--blue-text);
+        }
+
+        /* Navigation Dots */
+        .dots-container {
+            position: absolute;
+            bottom: 40px;
+            display: flex;
+            gap: 12px;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            background-color: #CBD5E1;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .dot.active {
+            background-color: var(--blue-text);
+            transform: scale(1.3);
+        }
+
+        /* Responsive Tweaks */
+        @media (max-width: 768px) {
+            .testimonial-container { padding: 0 5%; }
+            .testimonial-text { font-size: 26px; }
+            .author-img { width: 70px; height: 70px; }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="testimonial-container">
+        
+        <!-- Slide 1 -->
+        <div class="carousel-slide active">
+            <span class="quote-icon">"</span>
+            <blockquote class="testimonial-text">
+                "The humans of our family have now started to reap the benefit of the skill & dedication this institute possesses. They treat us as whole & complete entities."
+            </blockquote>
+            <div class="author-box">
+                <!-- Using a placeholder for the doctor image -->
+                <img src="https://images.unsplash.com/photo-1559839734-2b71f1536783?auto=format&fit=crop&q=80&w=200&h=200" alt="Dr. Elena Rodriguez" class="author-img">
+                <h4 class="author-name">Dr. Elena Rodriguez</h4>
+                <p class="author-role">ALUMNI & PRACTITIONER</p>
+            </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="carousel-slide">
+            <span class="quote-icon">99</span>
+            <blockquote class="testimonial-text">
+                "Finding an institute that views healing through a classical lens while maintaining modern clinical standards has completely transformed my practice."
+            </blockquote>
+            <div class="author-box">
+                <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&q=80&w=200&h=200" alt="Dr. James Smith" class="author-img">
+                <h4 class="author-name">Dr. James Smith</h4>
+                <p class="author-role">SENIOR CLINICIAN</p>
+            </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="carousel-slide">
+            <span class="quote-icon">99</span>
+            <blockquote class="testimonial-text">
+                "Deep immersion into miasms and complex nosodes provided the clinical breakthrough I was searching for. Highly recommended for dedicated learners."
+            </blockquote>
+            <div class="author-box">
+                <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&q=80&w=200&h=200" alt="Dr. Sarah Chen" class="author-img">
+                <h4 class="author-name">Dr. Sarah Chen</h4>
+                <p class="author-role">PRACTITIONER</p>
+            </div>
+        </div>
+
+        <!-- Dots -->
+        <div class="dots-container">
+            <div class="dot active" onclick="currentSlide(0)"></div>
+            <div class="dot" onclick="currentSlide(1)"></div>
+            <div class="dot" onclick="currentSlide(2)"></div>
+        </div>
+
+    </section>
+
+    <script>
+        let slideIndex = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+        const dots = document.querySelectorAll('.dot');
+
+        function showSlides(n) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            slides[n].classList.add('active');
+            dots[n].classList.add('active');
+        }
+
+        function currentSlide(n) {
+            slideIndex = n;
+            showSlides(slideIndex);
+        }
+
+        // Optional: Auto-play every 7 seconds
+        setInterval(() => {
+            slideIndex = (slideIndex + 1) % slides.length;
+            showSlides(slideIndex);
+        }, 7000);
+    </script>
+
+</body>
+</html>

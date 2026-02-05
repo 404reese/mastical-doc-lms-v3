@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic Offerings</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons for small icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --bg-color: #FDFBF7F2;
+            --blue-accent: #1F308B;
+            --title-black: #1E293B;
+            --para-color: #475569;
+            --font-serif: 'Playfair Display', serif;
+            --font-sans: 'Inter', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-color);
+            font-family: var(--font-sans);
+            padding-bottom: 100px;
+        }
+
+        .academic-section {
+            max-width: 1250px;
+            margin: 80px auto;
+            padding: 0 20px;
+        }
+
+        /* --- Header Styling --- */
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 40px;
+        }
+
+        .header-text h2 {
+            font-family: var(--font-serif);
+            font-size: 48px;
+            color: var(--blue-accent);
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .header-text p {
+            color: var(--para-color);
+            font-size: 18px;
+        }
+
+        .catalog-link {
+            color: var(--blue-accent);
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 1px solid var(--blue-accent);
+            padding-bottom: 2px;
+            font-size: 15px;
+            transition: opacity 0.3s;
+        }
+
+        .catalog-link:hover { opacity: 0.7; }
+
+        /* --- Scroll Container --- */
+        .course-scroll-wrapper {
+            overflow-x: auto;
+            scrollbar-width: none; /* Hide scrollbar Firefox */
+            -ms-overflow-style: none; /* Hide scrollbar IE/Edge */
+            padding-bottom: 20px;
+        }
+
+        .course-scroll-wrapper::-webkit-scrollbar { display: none; } /* Hide scrollbar Chrome/Safari */
+
+        .course-grid {
+            display: flex;
+            gap: 25px;
+            padding: 10px 0;
+        }
+
+        /* --- Card Styling --- */
+        .course-card {
+            flex: 0 0 480px; /* Exact width to fit 2.5 cards on desktop */
+            height: 300px;
+            border-radius: 40px;
+            padding: 35px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            color: white;
+            background: linear-gradient(135deg, #cbd5e1 0%, #1F308B 80%); /* Base gradient */
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        /* Styling for internal visuals (mocking the image pattern) */
+        .course-card::after {
+            content: "";
+            position: absolute;
+            bottom: 0; right: 0;
+            width: 100%; height: 100%;
+            background-image: url('https://www.transparenttextures.com/patterns/cubes.png');
+            opacity: 0.1;
+            z-index: 1;
+        }
+
+        .course-card:hover { transform: translateY(-5px); }
+
+        .card-content { z-index: 2; position: relative; height: 100%; display: flex; flex-direction: column; }
+
+        .card-type {
+            font-family: var(--font-serif);
+            font-style: italic;
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #ffffff;
+            opacity: 0.9;
+        }
+
+        .card-title {
+            font-size: 28px;
+            font-weight: 800;
+            line-height: 1.1;
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+            max-width: 90%;
+            color: #1E293B; /* Exact dark title color from image */
+        }
+
+        .card-badge {
+            margin-top: auto;
+            background: rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            width: fit-content;
+            margin-bottom: 20px;
+        }
+
+        .card-footer {
+            display: flex;
+            gap: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .footer-item { display: flex; align-items: center; gap: 6px; }
+        .footer-item i { width: 14px; height: 14px; }
+
+        /* --- Explore All Card --- */
+        .explore-card {
+            flex: 0 0 300px;
+            background: #fff;
+            border: 2px dashed #cbd5e1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 40px;
+            color: var(--blue-accent);
+            text-align: center;
+            padding: 30px;
+            transition: all 0.3s;
+        }
+
+        .explore-card:hover { background: #f8fafc; border-color: var(--blue-accent); }
+        .explore-card h4 { font-family: var(--font-serif); font-size: 24px; margin-bottom: 10px; }
+        .explore-card i { margin-bottom: 15px; }
+
+        /* --- Responsive --- */
+        @media (max-width: 768px) {
+            .section-header { flex-direction: column; align-items: flex-start; gap: 15px; }
+            .header-text h2 { font-size: 36px; }
+            .course-card { flex: 0 0 320px; height: 260px; padding: 25px; }
+            .card-title { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+
+<section class="academic-section">
+    <div class="section-header">
+        <div class="header-text">
+            <h2>Academic Offerings</h2>
+            <p>Curated paths for every aspiring healer.</p>
+        </div>
+        <a href="#" class="catalog-link">View Course Catalog</a>
+    </div>
+
+    <div class="course-scroll-wrapper">
+        <div class="course-grid" id="courseGrid">
+            <!-- Dynamic cards inserted here -->
+        </div>
+    </div>
+</section>
+
+<script>
+    const courses = [
+        {
+            title: "HOMEOPATHIC STRATEGIES FOR GERIATRICS- WITH SPECIAL FOCUS ON OPHTHALMOLOGY",
+            type: "Advanced | English",
+            badge: "Undergraduate"
+        },
+        {
+            title: "CHRONIC DISEASE MANAGEMENT & ADVANCED MIASMATIC ANALYSIS",
+            type: "Advanced | English",
+            badge: "Postgraduate"
+        },
+        {
+            title: "PEDIATRIC PRESCRIBING & CONSTITUTIONAL THERAPEUTICS",
+            type: "Advanced | English",
+            badge: "Practitioner"
+        },
+        {
+            title: "MATERIA MEDICA VIVA: MASTERING THE RED LINE SYMPTOMS",
+            type: "Advanced | English",
+            badge: "Undergraduate"
+        }
+    ];
+
+    const grid = document.getElementById('courseGrid');
+
+    function createCards() {
+        // Create 4 main cards
+        courses.forEach(course => {
+            const card = document.createElement('div');
+            card.className = 'course-card';
+            card.innerHTML = `
+                <div class="card-content">
+                    <div class="card-type">${course.type}</div>
+                    <div class="card-title">${course.title}</div>
+                    <div class="card-badge">${course.badge}</div>
+                    <div class="card-footer">
+                        <div class="footer-item"><i data-lucide="calendar"></i> Full-Time Curriculum</div>
+                        <div class="footer-item"><i data-lucide="shield-check"></i> Accredited</div>
+                    </div>
+                </div>
+            `;
+            grid.appendChild(card);
+        });
+
+        // Create the "Explore All" card
+        const exploreCard = document.createElement('div');
+        exploreCard.className = 'explore-card';
+        exploreCard.innerHTML = `
+            <i data-lucide="arrow-right-circle" style="width: 40px; height: 40px;"></i>
+            <h4>Explore All Courses</h4>
+            <p>Browse our full catalog of specialized training</p>
+        `;
+        grid.appendChild(exploreCard);
+
+        // Initialize Lucide icons
+        lucide.createIcons();
+    }
+
+    createCards();
+</script>
+
+</body>
+</html>
