@@ -49,7 +49,7 @@ const Testimonials = () => {
     }, [nextSlide]);
 
     return (
-        <section className="h-screen flex flex-col justify-center items-center text-center px-[5%] md:px-[10%] relative overflow-hidden bg-[var(--bg-color)]">
+        <section className="h-screen flex flex-col justify-center items-center text-center px-[5%] md:px-[10%] relative overflow-hidden">
             {testimonials.map((testimonial, index) => (
                 <div
                     key={index}
@@ -89,8 +89,8 @@ const Testimonials = () => {
                         key={index}
                         onClick={() => goToSlide(index)}
                         className={`w-2 h-2 rounded-full cursor-pointer transition-all duration-300 ${index === activeIndex
-                                ? "bg-[var(--blue-accent)] scale-125"
-                                : "bg-[#CBD5E1]"
+                            ? "bg-[var(--blue-accent)] scale-125"
+                            : "bg-[#CBD5E1]"
                             }`}
                     />
                 ))}

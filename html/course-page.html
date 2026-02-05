@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Catalog - Academy of Classical Homeopathy</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --bg-color: #FDFBF7F2;
+            --blue-accent: #1F308B;
+            --title-black: #1E293B;
+            --para-color: #475569;
+            --sidebar-card-bg: #FFFFFF;
+            --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            --font-serif: 'Playfair Display', serif;
+            --font-sans: 'Inter', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-color);
+            font-family: var(--font-sans);
+            color: var(--para-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* --- Header Section --- */
+        .catalog-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 60px;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            padding-bottom: 30px;
+        }
+
+        .header-title h1 {
+            font-family: var(--font-serif);
+            font-size: 42px;
+            color: var(--blue-accent);
+            margin-bottom: 8px;
+        }
+
+        .header-title p {
+            font-size: 15px;
+            color: var(--para-color);
+        }
+
+        .search-box {
+            position: relative;
+            width: 350px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 12px 15px 12px 45px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            background: white;
+            font-size: 14px;
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #94a3b8;
+            width: 18px;
+        }
+
+        /* --- Layout --- */
+        .catalog-main {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 40px;
+        }
+
+        /* --- Sidebar --- */
+        .sidebar-section {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: var(--card-shadow);
+            border-top: 3px solid var(--blue-accent);
+        }
+
+        .sidebar-section h3 {
+            font-family: var(--font-serif);
+            font-size: 20px;
+            color: var(--blue-accent);
+            margin-bottom: 20px;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .filter-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--title-black);
+            cursor: pointer;
+        }
+
+        .filter-item input {
+            width: 16px;
+            height: 16px;
+            accent-color: var(--blue-accent);
+        }
+
+        .promo-card {
+            background-color: var(--blue-accent);
+            color: white;
+            padding: 30px 20px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .promo-card i {
+            margin-bottom: 15px;
+            opacity: 0.9;
+        }
+
+        .promo-card h4 {
+            font-family: var(--font-serif);
+            font-size: 22px;
+            margin-bottom: 12px;
+        }
+
+        .promo-card p {
+            font-size: 13px;
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+
+        .btn-white {
+            display: inline-block;
+            background: white;
+            color: var(--blue-accent);
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 12px;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+
+        /* --- Course Cards --- */
+        .course-list {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .course-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s;
+        }
+
+        .course-card:hover { transform: translateY(-5px); }
+
+        .card-img-wrapper {
+            position: relative;
+            height: 100%;
+        }
+
+        .card-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .badge {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: var(--blue-accent);
+            color: white;
+            padding: 6px 15px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .badge.certificate { background: #84cc16; }
+        .badge.specialization { background: #06b6d4; }
+        .badge.fellowship { background: #334155; }
+
+        .card-content {
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-content h2 {
+            font-family: var(--font-serif);
+            font-size: 28px;
+            color: var(--blue-accent);
+            margin-bottom: 12px;
+        }
+
+        .card-content .desc {
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--title-black);
+        }
+
+        .feature i { color: #22c55e; }
+
+        .card-footer {
+            margin-top: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #f1f5f9;
+            padding-top: 20px;
+        }
+
+        .meta-info {
+            display: flex;
+            gap: 20px;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-learn {
+            background: var(--blue-accent);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 13px;
+            text-transform: uppercase;
+        }
+
+        /* --- Pagination --- */
+        .pagination {
+            margin-top: 60px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .page-link {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            color: var(--para-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .page-link.active {
+            background: var(--blue-accent);
+            color: white;
+            border-color: var(--blue-accent);
+        }
+
+        .page-link:hover:not(.active) { background: #f8fafc; }
+
+        /* --- Responsive --- */
+        @media (max-width: 1024px) {
+            .catalog-main { grid-template-columns: 1fr; }
+            .course-card { grid-template-columns: 250px 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .catalog-header { flex-direction: column; align-items: flex-start; gap: 20px; }
+            .search-box { width: 100%; }
+            .course-card { grid-template-columns: 1fr; }
+            .feature-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Header -->
+    <header class="catalog-header">
+        <div class="header-title">
+            <h1>Course Catalog</h1>
+            <p>Accredited education for aspiring healers and medical professionals. Browse our curriculum below.</p>
+        </div>
+        <div class="search-box">
+            <i data-lucide="search"></i>
+            <input type="text" placeholder="Search courses...">
+        </div>
+    </header>
+
+    <div class="catalog-main">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-section">
+                <h3>Level</h3>
+                <div class="filter-group">
+                    <label class="filter-item"><input type="checkbox"> Beginner</label>
+                    <label class="filter-item"><input type="checkbox"> Intermediate</label>
+                    <label class="filter-item"><input type="checkbox"> Advanced</label>
+                    <label class="filter-item"><input type="checkbox"> Post-Grad</label>
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>Topic</h3>
+                <div class="filter-group">
+                    <label class="filter-item"><input type="checkbox"> Materia Medica</label>
+                    <label class="filter-item"><input type="checkbox"> Clinical Practice</label>
+                    <label class="filter-item"><input type="checkbox"> Pediatrics</label>
+                    <label class="filter-item"><input type="checkbox"> Research</label>
+                </div>
+            </div>
+
+            <div class="promo-card">
+                <i data-lucide="calendar" style="width: 40px; height: 40px;"></i>
+                <h4>Upcoming Webinars</h4>
+                <p>Join our free introductory sessions starting next week.</p>
+                <a href="#" class="btn-white">View Schedule</a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="course-list">
+            
+            <!-- Course 1 -->
+            <div class="course-card">
+                <div class="card-img-wrapper">
+                    <span class="badge">Diploma</span>
+                    <img src="https://images.unsplash.com/photo-1512069772995-ec65ed45afd6?auto=format&fit=crop&q=80&w=600" alt="DHMS">
+                </div>
+                <div class="card-content">
+                    <h2>Homeopathic Medicine & Surgery (DHMS)</h2>
+                    <p class="desc">A comprehensive program covering anatomy, materia medica, and clinical practice. This course establishes a robust foundation for becoming a licensed practitioner.</p>
+                    <div class="feature-grid">
+                        <div class="feature"><i data-lucide="check-circle-2"></i> Materia Medica & Repertory</div>
+                        <div class="feature"><i data-lucide="check-circle-2"></i> Clinical Diagnostics</div>
+                        <div class="feature"><i data-lucide="check-circle-2"></i> Case Management</div>
+                        <div class="feature"><i data-lucide="check-circle-2"></i> Ethics & Jurisprudence</div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="meta-info">
+                            <div class="meta-item"><i data-lucide="clock"></i> 4 Years</div>
+                            <div class="meta-item"><i data-lucide="graduation-cap"></i> Certification</div>
+                        </div>
+                        <a href="#" class="btn-learn">Learn More</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Course 2 -->
+            <div class="course-card">
+                <div class="card-img-wrapper">
+                    <span class="badge certificate">Certificate</span>
+                    <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=600" alt="Acute Prescribing">
+                </div>
+                <div class="card-content">
+                    <h2>Acute Prescribing for Beginners</h2>
+                    <p class="desc">Start your journey with confidence. Learn the basics of acute case taking and remedy selection for common everyday ailments like colds, flu, and minor injuries.</p>
+                    <div class="feature-grid">
+                        <div class="feature"><i data-lucide="check-circle-2"></i> Home First-Aid Kits</div>
+                        <div class="feature"><i data-lucide="check-circle-2"></i> Potency & Dosage</div>
+                        <div class="feature"><i data-lucide="check-circle-2"></i> Acute vs. Chronic</div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="meta-info">
+                            <div class="meta-item"><i data-lucide="clock"></i> 6 Months</div>
+                            <div class="meta-item"><i data-lucide="wifi"></i> Online</div>
+                        </div>
+                        <a href="#" class="btn-learn">Learn More</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Course 3 -->
+            <div class="course-card">
+                <div class="card-img-wrapper">
+                    <span class="badge specialization">Specialization</span>
+                    <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=600" alt="Pediatric">
+                </div>
+                <div class="card-content">
+                    <h2>Pediatric Homeopathy</h2>
+                    <p class="desc">Master the delicate art of treating children. This specialized course focuses on constitutional types, growth milestones, and safe remedies for infants through adolescents.</p>
+                    <div class="feature-grid">
+                        <div class="feature"><i data-lucide="check-circle-2"></i> Child Development</div>
+                        <div class="feature"><i data-lucide="check-circle-2"></i> Fevers & Teething</div>
+                        <div class="feature"><i data-lucide="check-circle-2"></i> Emotional Health</div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="meta-info">
+                            <div class="meta-item"><i data-lucide="clock"></i> 1 Year</div>
+                            <div class="meta-item"><i data-lucide="hospital"></i> Clinical</div>
+                        </div>
+                        <a href="#" class="btn-learn">Learn More</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Course 4 -->
+            <div class="course-card">
+                <div class="card-img-wrapper">
+                    <span class="badge fellowship">Fellowship</span>
+                    <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=600" alt="Fellowship">
+                </div>
+                <div class="card-content">
+                    <h2>Fellowship in Clinical Homeopathy</h2>
+                    <p class="desc">Designed for existing practitioners looking to specialize. Engage in advanced clinical training, complex case management, and research methodologies.</p>
+                    <div class="feature-grid">
+                        <div class="feature"><i data-lucide="check-circle-2"></i> Miasmatic Prescribing</div>
+                        <div class="feature"><i data-lucide="check-circle-2"></i> Autoimmune Protocols</div>
+                        <div class="feature"><i data-lucide="check-circle-2"></i> Peer Review</div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="meta-info">
+                            <div class="meta-item"><i data-lucide="clock"></i> 2 Years</div>
+                            <div class="meta-item"><i data-lucide="graduation-cap"></i> Post-Grad</div>
+                        </div>
+                        <a href="#" class="btn-learn">Learn More</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination">
+                <a href="#" class="page-link">1</a>
+                <a href="#" class="page-link active">2</a>
+                <a href="#" class="page-link">3</a>
+                <a href="#" class="page-link"><i data-lucide="chevron-right" style="width:16px"></i></a>
+            </div>
+
+        </main>
+    </div>
+</div>
+
+<script>
+    // Initialize Lucide icons
+    lucide.createIcons();
+</script>
+</body>
+</html>

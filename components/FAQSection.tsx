@@ -35,7 +35,7 @@ const FAQSection: React.FC = () => {
     };
 
     return (
-        <section className="bg-[var(--bg-cream)] py-[100px] px-[5%]">
+        <section className="py-[100px] px-[5%]">
             <div className="max-w-[800px] mx-auto">
                 <div className="text-center mb-[60px]">
                     <h2 className="font-playfair text-[48px] md:text-[56px] text-[var(--title-color)] mb-[20px] leading-tight">

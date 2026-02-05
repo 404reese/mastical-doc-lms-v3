@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diploma in Homeopathic Medicine & Surgery - Academy of Classical Homeopathy</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --bg-color: #FDFBF7F2;
+            --blue-accent: #1F308B;
+            --title-black: #1E293B;
+            --para-color: #475569;
+            --accent-green: #22c55e;
+            --font-serif: 'Playfair Display', serif;
+            --font-sans: 'Inter', sans-serif;
+            --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-color);
+            font-family: var(--font-sans);
+            color: var(--para-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* --- Breadcrumbs --- */
+        .breadcrumbs {
+            font-size: 13px;
+            margin-bottom: 30px;
+            color: #94a3b8;
+        }
+        .breadcrumbs span { margin: 0 8px; }
+        .breadcrumbs a { color: #94a3b8; text-decoration: none; }
+
+        /* --- Main Layout --- */
+        .course-page-grid {
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            gap: 60px;
+            align-items: start;
+        }
+
+        /* --- Left Column (Scrollable) --- */
+        .course-main-content h1 {
+            font-family: var(--font-serif);
+            font-size: 48px;
+            color: var(--blue-accent);
+            line-height: 1.1;
+            margin-bottom: 25px;
+        }
+
+        .course-intro {
+            font-size: 18px;
+            margin-bottom: 40px;
+            max-width: 650px;
+        }
+
+        hr { border: 0; border-top: 1px solid rgba(0,0,0,0.06); margin: 40px 0; }
+
+        section { margin-bottom: 50px; }
+
+        h2 {
+            font-family: var(--font-serif);
+            font-size: 32px;
+            color: var(--title-black);
+            margin-bottom: 25px;
+        }
+
+        /* Features List */
+        .description-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px 30px;
+            margin-top: 25px;
+        }
+
+        .desc-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        .desc-item i { color: var(--accent-green); width: 18px; }
+
+        /* Accordion Content */
+        .accordion {
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            overflow: hidden;
+            background: #fff;
+        }
+
+        details {
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        details:last-child { border-bottom: none; }
+
+        summary {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 700;
+            color: var(--title-black);
+            list-style: none;
+            background: #fcfcfc;
+        }
+
+        summary::-webkit-details-marker { display: none; }
+
+        summary .summary-meta { font-size: 12px; color: #94a3b8; font-weight: 400; }
+
+        .accordion-content {
+            padding: 0 20px 20px;
+        }
+
+        .lecture-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px dashed #e2e8f0;
+            font-size: 14px;
+        }
+
+        .lecture-item:last-child { border-bottom: none; }
+        .lecture-item .lecture-title { display: flex; align-items: center; gap: 10px; }
+        .lecture-item i { color: #94a3b8; width: 16px; }
+
+        /* Instructor Cards */
+        .instructor-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .instructor-card {
+            background: #f8f6f0; /* Creamy card */
+            padding: 40px 30px;
+            border-radius: 40px;
+            text-align: center;
+        }
+
+        .inst-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 5px solid #fff;
+        }
+
+        .inst-name {
+            font-family: var(--font-serif);
+            font-size: 20px;
+            color: var(--blue-accent);
+            text-decoration: underline;
+            font-weight: 700;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .inst-role {
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .inst-bio {
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        /* --- Right Sidebar (Fixed) --- */
+        .sticky-sidebar {
+            position: sticky;
+            top: 40px;
+        }
+
+        .pricing-card {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            border: 1px solid #e2e8f0;
+        }
+
+        .video-preview {
+            position: relative;
+            height: 200px;
+            background: url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=600') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .play-btn {
+            width: 60px;
+            height: 60px;
+            background: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .preview-overlay-text {
+            position: absolute;
+            bottom: 15px;
+            color: #fff;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .pricing-content {
+            padding: 30px;
+        }
+
+        .price-row {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .current-price { font-size: 32px; font-weight: 800; color: var(--title-black); }
+        .old-price { font-size: 18px; text-decoration: line-through; color: #94a3b8; }
+        .discount-tag { color: var(--accent-green); font-weight: 700; }
+
+        .btn-full {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            border-radius: 8px;
+            text-align: center;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
+            margin-bottom: 12px;
+            transition: 0.3s;
+        }
+
+        .btn-apply { background: var(--blue-accent); color: #fff; }
+        .btn-outline { border: 1px solid #e2e8f0; color: var(--title-black); }
+        
+        .guarantee {
+            text-align: center;
+            font-size: 12px;
+            color: #94a3b8;
+            margin: 15px 0 30px;
+        }
+
+        .includes-list h5 {
+            color: var(--title-black);
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .inc-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 13px;
+            margin-bottom: 12px;
+            color: #64748b;
+        }
+
+        .inc-item i { width: 16px; color: #94a3b8; }
+
+        .help-link {
+            text-align: center;
+            padding-top: 25px;
+            border-top: 1px solid #f1f5f9;
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--blue-accent);
+            text-decoration: underline;
+            display: block;
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 968px) {
+            .course-page-grid { grid-template-columns: 1fr; }
+            .sticky-sidebar { position: static; margin-top: 40px; }
+            .course-main-content h1 { font-size: 36px; }
+            .instructor-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Breadcrumbs -->
+    <nav class="breadcrumbs">
+        <a href="#">Home</a> <span>&rsaquo;</span> <a href="#">Courses</a> <span>&rsaquo;</span> <a href="#">DHMS</a>
+    </nav>
+
+    <div class="course-page-grid">
+        
+        <!-- Left Content -->
+        <main class="course-main-content">
+            <h1>Diploma in Homeopathic Medicine & Surgery</h1>
+            <p class="course-intro">A comprehensive 4-year undergraduate journey combining traditional holistic wisdom with modern medical sciences. Build a prestigious career in alternative healthcare.</p>
+            
+            <hr>
+
+            <!-- Description -->
+            <section>
+                <h2>Description</h2>
+                <p>The Diploma in Homeopathic Medicine & Surgery (DHMS) offers a deep dive into the principles of Homeopathy. This program is designed to create competent practitioners capable of addressing health challenges with natural, safe, and effective remedies.</p>
+                <p style="margin-top:15px">Throughout the course, students will gain extensive practical experience in clinical settings, engaging with real patients under expert supervision. From understanding Materia Medica to mastering Repertory and Surgery, the curriculum ensures a well-rounded medical education.</p>
+                
+                <div class="description-list">
+                    <div class="desc-item"><i data-lucide="check"></i> Clinical training from Year 1</div>
+                    <div class="desc-item"><i data-lucide="check"></i> Expert faculty practitioners</div>
+                    <div class="desc-item"><i data-lucide="check"></i> Modern research methodology</div>
+                    <div class="desc-item"><i data-lucide="check"></i> Hospital rotations included</div>
+                </div>
+            </section>
+
+            <!-- Course Content -->
+            <section>
+                <h2>Course Content</h2>
+                <div class="accordion">
+                    <!-- Module 1 -->
+                    <details open>
+                        <summary>
+                            Module 1: Foundations of Medicine
+                            <span class="summary-meta">6 lectures &bull; Year 1</span>
+                        </summary>
+                        <div class="accordion-content">
+                            <div class="lecture-item">
+                                <div class="lecture-title"><i data-lucide="play-circle"></i> Anatomy & Physiology Basics</div>
+                                <div class="lecture-duration">45:00</div>
+                            </div>
+                            <div class="lecture-item">
+                                <div class="lecture-title"><i data-lucide="play-circle"></i> Introduction to Homeopathy Principles</div>
+                                <div class="lecture-duration">01:15:00</div>
+                            </div>
+                            <div class="lecture-item">
+                                <div class="lecture-title"><i data-lucide="play-circle"></i> Pharmacy & Pharmacology</div>
+                                <div class="lecture-duration">55:00</div>
+                            </div>
+                        </div>
+                    </details>
+                    <!-- Module 2 -->
+                    <details>
+                        <summary>
+                            Module 2: Pathology & Materia Medica
+                            <span class="summary-meta">6 lectures &bull; Year 2</span>
+                        </summary>
+                        <div class="accordion-content">
+                            <p style="padding: 10px; font-size: 13px;">Content for Year 2 curriculum.</p>
+                        </div>
+                    </details>
+                    <!-- Module 3 -->
+                    <details>
+                        <summary>
+                            Module 3: Advanced Clinical Specialization
+                            <span class="summary-meta">8 lectures &bull; Year 3</span>
+                        </summary>
+                        <div class="accordion-content">
+                            <p style="padding: 10px; font-size: 13px;">Content for Year 3 curriculum.</p>
+                        </div>
+                    </details>
+                </div>
+            </section>
+
+            <!-- Instructor -->
+            <section>
+                <h2>Instructor</h2>
+                <div class="instructor-grid">
+                    <!-- Instructor 1 -->
+                    <div class="instructor-card">
+                        <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&q=80&w=200&h=200" alt="Dr Sarah" class="inst-img">
+                        <a href="#" class="inst-name">Dr. Sarah Mitchell, MD (Hom)</a>
+                        <span class="inst-role">Senior Homeopathic Consultant & Educator</span>
+                        <p class="inst-bio">Dr. Mitchell is a renowned practitioner with over 15 years of experience in classical homeopathy. She has served as Head of Department at prestigious institutions.</p>
+                    </div>
+                    <!-- Instructor 2 -->
+                    <div class="instructor-card">
+                        <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&q=80&w=200&h=200" alt="Dr Sarah" class="inst-img">
+                        <a href="#" class="inst-name">Dr. Sarah Mitchell, MD (Hom)</a>
+                        <span class="inst-role">Senior Homeopathic Consultant & Educator</span>
+                        <p class="inst-bio">Dr. Mitchell is a renowned practitioner with over 15 years of experience in classical homeopathy. She has served as Head of Department at prestigious institutions.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Right Sidebar -->
+        <aside class="sticky-sidebar">
+            <div class="pricing-card">
+                <div class="video-preview">
+                    <div class="play-btn"><i data-lucide="play" fill="#1F308B"></i></div>
+                    <div class="preview-overlay-text">Preview this course</div>
+                </div>
+                
+                <div class="pricing-content">
+                    <div class="price-row">
+                        <span class="current-price">$120</span>
+                        <span class="old-price">$4,500</span>
+                        <span class="discount-tag">97% off</span>
+                    </div>
+
+                    <a href="#" class="btn-full btn-apply">Apply Now</a>
+                    <a href="#" class="btn-full btn-outline">Download Syllabus</a>
+                    
+                    <p class="guarantee">30-Day Money-Back Guarantee</p>
+
+                    <div class="includes-list">
+                        <h5>This course includes:</h5>
+                        <div class="inc-item"><i data-lucide="download"></i> Downloadable resources</div>
+                        <div class="inc-item"><i data-lucide="infinity"></i> Full lifetime access</div>
+                        <div class="inc-item"><i data-lucide="smartphone"></i> Access on mobile and TV</div>
+                        <div class="inc-item"><i data-lucide="award"></i> Certificate of completion</div>
+                    </div>
+
+                    <a href="#" class="help-link">Have doubts? Talk to Our Team</a>
+                </div>
+            </div>
+        </aside>
+
+    </div>
+</div>
+
+<script>
+    // Initialize Lucide icons
+    lucide.createIcons();
+</script>
+</body>
+</html>

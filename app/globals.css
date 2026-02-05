@@ -37,6 +37,14 @@
   font-family: var(--font-inter);
 }
 
+.academy-text {
+  font-weight: 400;
+  font-family: var(--font-playfair);
+}
+
+.italic {
+  font-style: italic;
+}
 
 body {
   background: var(--background);

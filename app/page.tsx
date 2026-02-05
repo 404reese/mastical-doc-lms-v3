@@ -13,11 +13,13 @@ export default function Home() {
     <main className="min-h-screen bg-[var(--bg-color)]">
       <Navbar />
       <Hero />
-      <OurPhilosophy />
-      <Courses />
-      <Testimonials />
-      <ResidencySection />
-      <FAQSection />
+      <div className="bg-white">
+        <OurPhilosophy />
+        <Courses />
+        <Testimonials />
+        <ResidencySection />
+        <FAQSection />
+      </div>
       <CTASection />
       <Footer />
     </main>

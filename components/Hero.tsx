@@ -9,9 +9,9 @@ const Hero = () => {
                 <div className="h-[1px] w-[50px] bg-[#cbd5e1]"></div>
             </div>
 
-            <h1 className="font-playfair text-[clamp(48px,9vw,100px)] text-[#1F308B] leading-[1.1] mb-[30px] font-normal">
-                <span className="font-normal">Academy of</span> <br className="md:hidden" />
-                <span className="italic text-[#1E293B] font-medium md:whitespace-nowrap">Classical Homeopathy</span>
+            <h1 className="font-playfair text-[clamp(48px,9vw,100px)] leading-[1.1] mb-[30px] font-normal">
+                <span className="text-[#1F308B]">Academy of</span> <br className="md:hidden" />
+                <span className="italic md:whitespace-nowrap text-[#0F172A]">Classical Homeopathy</span>
             </h1>
 
             <p className="text-[clamp(16px,2vw,20px)] text-[#475569] max-w-[850px] mx-auto mb-[40px] leading-[1.6] font-inter">
@@ -24,16 +24,16 @@ const Hero = () => {
 
             <div className="flex flex-col md:flex-row justify-center items-center gap-[20px] md:gap-[30px]">
                 <Link
-                    href="#discover"
+                    href="/courses"
                     className="bg-[#1F308B] text-white no-underline px-[40px] py-[18px] rounded-[50px] font-semibold text-[14px] shadow-[0_10px_15px_-3px_rgba(31,48,139,0.3)] font-inter hover:opacity-90 transition-opacity"
                 >
-                    DISCOVER OUR PATH
+                    EXPLORE COURSES
                 </Link>
                 <Link
                     href="#manifesto"
                     className="text-[#1F308B] font-semibold text-[14px] flex items-center gap-[8px] no-underline font-inter hover:opacity-80 transition-opacity"
                 >
-                    READ THE MANIFESTO &rarr;
+                    HOW TO USE COURSES &rarr;
                 </Link>
             </div>
         </section>
