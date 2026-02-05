@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academy of Classical Homeopathy</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #FDFBF7F2;
+            --blue-accent: #1F308B;
+            --title-color: #1E293B;
+            --para-color: #475569;
+            --card-light: #F9F8F3;
+            --card-dark: #1F308B;
+            --font-serif: 'Playfair Display', serif;
+            --font-sans: 'Inter', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            font-family: var(--font-sans);
+            color: var(--para-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 5%;
+        }
+
+        /* --- PHILOSOPHY HEADER --- */
+        .philosophy-header {
+            position: relative;
+            margin-bottom: 60px;
+            max-width: 800px;
+        }
+
+        .philosophy-header h2 {
+            font-family: var(--font-serif);
+            font-size: 48px;
+            color: var(--blue-accent);
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .philosophy-header .quote {
+            font-family: var(--font-serif);
+            font-style: italic;
+            font-size: 20px;
+            color: #94a3b8;
+            margin-bottom: 15px;
+        }
+
+        .philosophy-header p {
+            font-size: 16px;
+            color: #64748b;
+        }
+
+        .leaf-icon {
+            position: absolute;
+            top: 40px;
+            right: -200px;
+            opacity: 0.3;
+        }
+
+        /* --- GRID LAYOUT --- */
+        .philosophy-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .card {
+            padding: 40px;
+            border-radius: 40px;
+            position: relative;
+            min-height: 320px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-light {
+            background-color: var(--card-light);
+            color: var(--para-color);
+        }
+
+        .card-dark {
+            background-color: var(--card-dark);
+            color: #cbd5e1;
+            box-shadow: 0 20px 40px rgba(31, 48, 139, 0.2);
+        }
+
+        .card h3 {
+            font-family: var(--font-serif);
+            font-size: 24px;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        .card-light h3 {
+            color: var(--blue-accent);
+        }
+
+        .card-dark h3 {
+            color: #ffffff;
+        }
+
+        .card p {
+            font-size: 15px;
+            line-height: 1.5;
+        }
+
+        .icon-top {
+            position: absolute;
+            top: 30px;
+            right: 35px;
+            width: 32px;
+            height: 32px;
+            opacity: 0.4;
+        }
+
+        .card-dark .icon-top {
+            opacity: 0.6;
+            stroke: white;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 1024px) {
+            .philosophy-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .leaf-icon {
+                display: none;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .philosophy-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .philosophy-header h2 {
+                font-size: 36px;
+            }
+
+            .card {
+                padding: 30px;
+                min-height: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="container">
+        <div class="philosophy-header">
+            <h2>Our Philosophy</h2>
+            <div class="quote">"To treat the patient, not merely the disease."</div>
+            <p>We bridge the gap between ancient botanical wisdom and contemporary practice, fostering intuition
+                alongside intellect.</p>
+
+            <!-- Decorative Leaf -->
+            <div class="leaf-icon">
+                <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="#849673" stroke-width="1.5">
+                    <path
+                        d="M12 2L15 8M12 2L9 8M12 22V8M12 8C12 8 19 10 19 16C19 22 12 22 12 22C12 22 5 22 5 16C5 10 12 8 12 8Z" />
+                </svg>
+            </div>
+        </div>
+
+        <div class="philosophy-grid">
+            <!-- Card 1 -->
+            <div class="card card-light">
+                <svg class="icon-top" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10" />
+                    <polyline points="12 6 12 12 16 14" />
+                </svg>
+                <h3>Comprehensive Duration</h3>
+                <p>Each course runs for 4-5 months, enabling in-depth understanding and Structured concept development.
+                </p>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="card card-dark">
+                <svg class="icon-top" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                    <rect x="2" y="3" width="20" height="14" rx="2" />
+                    <line x1="8" y1="21" x2="16" y2="21" />
+                    <line x1="12" y1="17" x2="12" y2="21" />
+                </svg>
+                <h3>Online & Hybrid Learning</h3>
+                <p>Courses are conducted online through live lectures, with a hybrid format that combine real-time
+                    learning and recorded access.</p>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="card card-light">
+                <svg class="icon-top" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="5 3 19 12 5 21 5 3" />
+                </svg>
+                <h3>Extended Recording Access</h3>
+                <p>Recordings of all live sessions remain available beyond the course duration allowing self-paced study
+                    and repeated revision.</p>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="card card-light">
+                <svg class="icon-top" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                    <circle cx="9" cy="7" r="4" />
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                </svg>
+                <h3>Multiple Expert Faculty</h3>
+                <p>Learn from multiple experienced speakers, gaining diverse clinical perspectives and practical
+                    insights.</p>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="card card-dark">
+                <svg class="icon-top" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                    <polyline points="17 11 12 6 7 11" />
+                    <polyline points="17 18 12 13 7 18" />
+                </svg>
+                <h3>Flexible for Practitioners</h3>
+                <p>Designed to support students and practicing clinicians, allowing learning to be balanced alongside
+                    studies or clinical work.</p>
+            </div>
+
+            <!-- Card 6 -->
+            <div class="card card-light">
+                <svg class="icon-top" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                    <polyline points="22 4 12 14.01 9 11.01" />
+                </svg>
+                <h3>Clinical Case-Based Learning</h3>
+                <p>Structured learning through detailed clinical case presentations, emphasizing case analysis, remedy
+                    selection, and practical decision-making.</p>
+            </div>
+        </div>
+    </section>
+
+</body>
+
+</html>
