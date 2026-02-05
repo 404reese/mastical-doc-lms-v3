@@ -3,6 +3,12 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --bg-color: #fdfbf7f2;
+  --blue-accent: #1f308b;
+  --title-color: #1e293b;
+  --para-color: #475569;
+  --card-light: #f9f8f3;
+  --card-dark: #1f308b;
 }
 
 @theme inline {
@@ -10,14 +16,18 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-playfair: var(--font-playfair);
+  --font-inter: var(--font-inter);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.font-playfair {
+  font-family: var(--font-playfair);
 }
+
+.font-inter {
+  font-family: var(--font-inter);
+}
+
 
 body {
   background: var(--background);

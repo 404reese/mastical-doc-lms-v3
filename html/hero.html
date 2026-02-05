@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academy of Classical Homeopathy</title>
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #FDFBF7F2;
+            --blue-accent: #1F308B;
+            --title-color: #1E293B;
+            --para-color: #475569;
+            --font-main: 'Playfair Display', serif;
+            --font-ui: 'Inter', sans-serif;
+            /* Clean sans-serif for UI elements */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            font-family: var(--font-ui);
+            color: var(--para-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- Navbar --- */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background: transparent;
+            position: relative;
+            z-index: 1000;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--font-ui);
+            font-weight: 700;
+            color: #0e7490;
+            /* Keeping original logo blue-green */
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--blue-accent);
+            font-weight: 600;
+            font-size: 13px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .apply-btn {
+            background-color: var(--blue-accent);
+            color: white !important;
+            padding: 12px 25px;
+            border-radius: 50px;
+            transition: opacity 0.3s;
+        }
+
+        /* --- Hamburger Menu --- */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            flex-direction: column;
+            gap: 5px;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--blue-accent);
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            text-align: center;
+            padding: 80px 5%;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .welcome-text {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            font-size: 14px;
+            letter-spacing: 3px;
+            color: var(--title-color);
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+
+        .welcome-text::before,
+        .welcome-text::after {
+            content: "";
+            height: 1px;
+            width: 50px;
+            background-color: #cbd5e1;
+        }
+
+        .hero h1 {
+            font-family: var(--font-main);
+            font-size: clamp(48px, 9vw, 100px);
+            color: var(--blue-accent);
+            line-height: 1.1;
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+
+        .hero h1 span.italic {
+            font-style: italic;
+            color: var(--blue-accent);
+        }
+
+        .hero p {
+            font-size: clamp(16px, 2vw, 20px);
+            color: var(--para-color);
+            max-width: 850px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+        }
+
+        /* --- Buttons --- */
+        .cta-group {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .btn-discover {
+            background-color: var(--blue-accent);
+            color: white;
+            text-decoration: none;
+            padding: 18px 40px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 14px;
+            box-shadow: 0 10px 15px -3px rgba(31, 48, 139, 0.3);
+        }
+
+        .link-manifesto {
+            text-decoration: none;
+            color: var(--blue-accent);
+            font-weight: 600;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .academy-text {
+            font-weight: 400;
+        }
+
+
+        /* --- Mobile Responsive --- */
+        @media (max-width: 968px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 70%;
+                background: white;
+                flex-direction: column;
+                justify-content: center;
+                box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
+                transition: 0.4s ease;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            /* Hamburger Animation */
+            .hamburger.active span:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active span:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding-top: 40px;
+            }
+
+            .cta-group {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <a href="#" class="logo">
+            <svg width="35" height="35" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M50 10L62 38H92L68 56L77 84L50 67L23 84L32 56L8 38H38L50 10Z" fill="#0e7490" />
+            </svg>
+            <div style="display:flex; flex-direction:column; line-height: 1;">
+                <span>Dr Gaurang</span>
+                <span style="color: #0e7490;">Gaikwad</span>
+            </div>
+        </a>
+
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <div class="nav-links" id="navLinks">
+            <a href="#">Philosophy</a>
+            <a href="#">Academics</a>
+            <a href="#">Faculty</a>
+            <a href="#">Journal</a>
+            <a href="#" class="apply-btn">Apply Now</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="welcome-text">WELCOME TO</div>
+
+        <h1>
+            <span class="academy-text">Academy of</span> <br>
+            <span class="italic" style="color:#1E293B">Classical Homeopathy</span>
+        </h1>
+
+        <p>
+            Led by Dr. Gaurang Gaikwad, offers clinically focused education across key specialties,
+            along with advanced training in miasms, nosodes, sarcodes, and complex concepts.
+            Blending classical and contemporary approaches, it provides evolving courses and
+            short-term in-clinic observership programs.
+        </p>
+
+        <div class="cta-group">
+            <a href="#" class="btn-discover">DISCOVER OUR PATH</a>
+            <a href="#" class="link-manifesto">READ THE MANIFESTO &rarr;</a>
+        </div>
+    </section>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+
+</html>
