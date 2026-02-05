@@ -4,11 +4,20 @@
   --background: #ffffff;
   --foreground: #171717;
   --bg-color: #fdfbf7f2;
+  --bg-cream: #FDFBF7;
+  --accent-tan: #C5A585;
+  --blue-primary: #1F308B;
+  --blue-dark: #1E293B;
+  --text-gray: #475569;
   --blue-accent: #1f308b;
   --title-color: #1e293b;
   --para-color: #475569;
   --card-light: #f9f8f3;
   --card-dark: #1f308b;
+  --footer-bg: #141210;
+  --footer-text: #94a3b8;
+  --footer-heading: #ffffff;
+  --accent-blue: #0ea5e9;
 }
 
 @theme inline {

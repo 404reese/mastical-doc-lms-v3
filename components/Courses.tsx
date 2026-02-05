@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Calendar, ShieldCheck, ArrowRightCircle } from "lucide-react";
+import { Calendar, ShieldCheck, ArrowRightCircle, MoveRight } from "lucide-react";
 
 const courses = [
     {
@@ -108,6 +108,12 @@ const Courses = () => {
                             </p>
                         </div>
                     </div>
+                </div>
+
+                {/* Mobile Swipe Indicator */}
+                <div className="flex md:hidden justify-center items-center gap-2 mt-4 text-[var(--blue-accent)] opacity-80 animate-pulse px-5">
+                    <span className="text-sm font-medium">Swipe to explore more</span>
+                    <MoveRight className="w-4 h-4" />
                 </div>
             </div>
         </section >

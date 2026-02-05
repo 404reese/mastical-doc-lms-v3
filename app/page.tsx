@@ -3,6 +3,10 @@ import Hero from "@/components/Hero";
 import OurPhilosophy from "@/components/OurPhilosophy";
 import Courses from "@/components/Courses";
 import Testimonials from "@/components/Testimonials";
+import ResidencySection from "@/components/ResidencySection";
+import FAQSection from "@/components/FAQSection";
+import CTASection from "@/components/CTASection";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
@@ -12,6 +16,10 @@ export default function Home() {
       <OurPhilosophy />
       <Courses />
       <Testimonials />
+      <ResidencySection />
+      <FAQSection />
+      <CTASection />
+      <Footer />
     </main>
   );
 }

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Residency and CTA Sections</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --bg-cream: #FDFBF7;
+            --blue-primary: #1F308B;
+            --blue-dark: #1E293B;
+            --text-gray: #475569;
+            --accent-tan: #C5A585;
+            --font-serif: 'Playfair Display', serif;
+            --font-sans: 'Inter', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--bg-cream);
+            overflow-x: hidden;
+        }
+
+        /* --- Section 1: Clinical Residency --- */
+        .residency-section {
+            padding: 100px 5%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 80px;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .image-container {
+            position: relative;
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* The thin outline border behind the image */
+        .image-outline {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 100%;
+            height: 100%;
+            border: 1px solid #d1d5db;
+            border-radius: 40px 180px 180px 40px; /* Asymmetric organic shape */
+            z-index: 1;
+        }
+
+        .residency-img {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 550px;
+            height: 450px;
+            object-fit: cover;
+            border-radius: 180px 180px 40px 180px; /* Unique curve from image */
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+        }
+
+        .content-container {
+            flex: 1;
+            max-width: 550px;
+        }
+
+        .label {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--accent-tan);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .content-container h2 {
+            font-family: var(--font-serif);
+            font-size: 52px;
+            color: var(--blue-primary);
+            line-height: 1.1;
+            margin-bottom: 25px;
+            font-weight: 500;
+        }
+
+        .description {
+            font-size: 18px;
+            color: var(--text-gray);
+            line-height: 1.6;
+            margin-bottom: 40px;
+        }
+
+        .feature-item {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .feature-item i {
+            color: var(--blue-primary);
+            width: 24px;
+            height: 24px;
+            flex-shrink: 0;
+            margin-top: 4px;
+        }
+
+        .feature-text h4 {
+            color: var(--blue-primary);
+            font-family: var(--font-serif);
+            font-size: 20px;
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+
+        .feature-text p {
+            color: var(--text-gray);
+            font-size: 15px;
+            line-height: 1.5;
+        }
+
+        .protocol-link {
+            display: inline-block;
+            color: var(--blue-primary);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border-bottom: 2px solid var(--blue-primary);
+            padding-bottom: 5px;
+            margin-top: 20px;
+            transition: opacity 0.3s;
+        }
+
+        .protocol-link:hover {
+            opacity: 0.7;
+        }
+
+        /* --- Section 2: Begin Your Journey (CTA) --- */
+        .cta-section {
+            background-color: var(--blue-primary);
+            padding: 120px 5%;
+            text-align: center;
+            color: white;
+        }
+
+        .cta-section h2 {
+            font-family: var(--font-serif);
+            font-size: 72px;
+            margin-bottom: 25px;
+            font-weight: 500;
+        }
+
+        .cta-section p {
+            font-size: 20px;
+            max-width: 600px;
+            margin: 0 auto 50px;
+            opacity: 0.9;
+            line-height: 1.5;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .btn {
+            padding: 18px 45px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .btn-apply {
+            background-color: white;
+            color: var(--blue-primary);
+        }
+
+        .btn-apply:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .btn-prospectus {
+            border: 1px solid rgba(255,255,255,0.4);
+            color: white;
+        }
+
+        .btn-prospectus:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+
+        /* --- Responsiveness --- */
+        @media (max-width: 1024px) {
+            .residency-section {
+                flex-direction: column;
+                text-align: center;
+                gap: 50px;
+            }
+            .feature-item {
+                text-align: left;
+            }
+            .cta-section h2 {
+                font-size: 48px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .residency-img {
+                height: 350px;
+            }
+            .content-container h2 {
+                font-size: 36px;
+            }
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- SECTION 1: RESIDENCY -->
+    <section class="residency-section">
+        <div class="image-container">
+            <div class="image-outline"></div>
+            <!-- Image placeholder matching the reference context -->
+            <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=800" alt="Clinical Learning" class="residency-img">
+        </div>
+
+        <div class="content-container">
+            <span class="label">Experiential Learning</span>
+            <h2>Hands-on Clinical Residency</h2>
+            <p class="description">
+                We believe that the art of healing is best learned through experience. Our 
+                students don't just read about cases; they manage them under expert 
+                guidance in a supportive, real-world environment.
+            </p>
+
+            <div class="feature-item">
+                <i data-lucide="shield-check"></i>
+                <div class="feature-text">
+                    <h4>Extensive Practical Experience</h4>
+                    <p>Students graduate with profound confidence built on real patient interaction.</p>
+                </div>
+            </div>
+
+            <div class="feature-item">
+                <i data-lucide="users"></i>
+                <div class="feature-text">
+                    <h4>Direct Mentorship</h4>
+                    <p>One-on-one guidance from master homeopaths throughout your residency.</p>
+                </div>
+            </div>
+
+            <a href="#" class="protocol-link">Explore Clinical Protocols</a>
+        </div>
+    </section>
+
+    <!-- SECTION 2: CTA -->
+    <section class="cta-section">
+        <h2>Begin Your Journey</h2>
+        <p>Admissions for the upcoming academic year are now open. Secure your place in our next cohort of healers.</p>
+        
+        <div class="cta-buttons">
+            <a href="#" class="btn btn-apply">Apply Now</a>
+            <a href="#" class="btn btn-prospectus">Prospectus</a>
+        </div>
+    </section>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>
