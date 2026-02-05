@@ -1,30 +1,10 @@
 "use client";
 
 import React from "react";
-import { Calendar, ShieldCheck, ArrowRightCircle, MoveRight } from "lucide-react";
-
-const courses = [
-    {
-        title: "HOMEOPATHIC STRATEGIES FOR GERIATRICS- WITH SPECIAL FOCUS ON OPHTHALMOLOGY",
-        type: "Advanced | English",
-        badge: "Undergraduate",
-    },
-    {
-        title: "CHRONIC DISEASE MANAGEMENT & ADVANCED MIASMATIC ANALYSIS",
-        type: "Advanced | English",
-        badge: "Postgraduate",
-    },
-    {
-        title: "PEDIATRIC PRESCRIBING & CONSTITUTIONAL THERAPEUTICS",
-        type: "Advanced | English",
-        badge: "Practitioner",
-    },
-    {
-        title: "MATERIA MEDICA VIVA: MASTERING THE RED LINE SYMPTOMS",
-        type: "Advanced | English",
-        badge: "Undergraduate",
-    },
-];
+import { Calendar, ShieldCheck, ArrowRightCircle } from "lucide-react";
+import { COURSES } from "@/data/courses";
+import type { Course } from "@/data/courses";
+import Link from "next/link";
 
 const Courses = () => {
     const [startIndex, setStartIndex] = React.useState(0);
@@ -47,8 +27,8 @@ const Courses = () => {
 
     // Combine courses + explore card for carousel logic
     const allItems = [
-        ...courses.map((c, i) => ({ ...c, type: 'course' as const, id: i })),
-        { type: 'explore' as const, id: 'explore' }
+        ...COURSES.map((c, i) => ({ ...c, contentType: 'course' as const })),
+        { contentType: 'explore' as const, id: 'explore' }
     ];
 
     const maxIndex = Math.max(0, allItems.length - visibleCount);
@@ -111,11 +91,12 @@ const Courses = () => {
                     }}
                 >
                     {allItems.map((item, index) => {
-                        if (item.type === 'course') {
-                            const course = item as typeof courses[0];
+                        if (item.contentType === 'course') {
+                            const course = item as Course;
                             return (
-                                <div
-                                    key={`course-${index}`}
+                                <Link
+                                    key={`course-${course.id}`}
+                                    href={`/courses/${course.slug}`}
                                     className="flex-none w-full md:w-[calc(50%-12px)] h-[260px] md:h-[350px] group relative rounded-[40px] p-6 md:p-9 flex flex-col justify-between overflow-hidden cursor-pointer transition-transform duration-300 hover:-translate-y-1 text-white"
                                     style={{
                                         background: "linear-gradient(135deg, #cbd5e1 0%, #1F308B 80%)",
@@ -148,7 +129,7 @@ const Courses = () => {
                                         <div className="flex gap-5 text-xs font-semibold">
                                             <div className="flex items-center gap-1.5">
                                                 <Calendar className="w-3.5 h-3.5" />
-                                                Full-Time Curriculum
+                                                {course.duration}
                                             </div>
                                             <div className="flex items-center gap-1.5">
                                                 <ShieldCheck className="w-3.5 h-3.5" />
@@ -156,17 +137,21 @@ const Courses = () => {
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </Link>
                             );
                         } else {
                             return (
-                                <div key="explore" className="flex-none w-full md:w-[calc(50%-12px)] h-[260px] md:h-[350px] bg-white border-2 border-dashed border-[#cbd5e1] rounded-[40px] flex flex-col items-center justify-center text-center p-8 text-[var(--blue-accent)] transition-all duration-300 hover:bg-slate-50 hover:border-[var(--blue-accent)] group cursor-pointer">
+                                <Link
+                                    key="explore"
+                                    href="/courses"
+                                    className="flex-none w-full md:w-[calc(50%-12px)] h-[260px] md:h-[350px] bg-white border-2 border-dashed border-[#cbd5e1] rounded-[40px] flex flex-col items-center justify-center text-center p-8 text-[var(--blue-accent)] transition-all duration-300 hover:bg-slate-50 hover:border-[var(--blue-accent)] group cursor-pointer"
+                                >
                                     <ArrowRightCircle className="w-12 h-12 mb-4 group-hover:scale-110 transition-transform" />
                                     <h4 className="font-playfair text-3xl mb-2">Explore All Courses</h4>
                                     <p className="text-base opacity-80 max-w-[250px]">
                                         Browse our full catalog of specialized training
                                     </p>
-                                </div>
+                                </Link>
                             );
                         }
                     })}

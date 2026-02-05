@@ -72,7 +72,7 @@ const CourseCard = ({ course }: { course: Course }) => {
                     </div>
 
                     <Link
-                        href="#"
+                        href={`/courses/${course.slug}`}
                         className="bg-[var(--blue-accent)] text-white px-6 py-3 rounded-md font-bold text-[13px] uppercase tracking-wide hover:opacity-90 transition-opacity inline-flex items-center gap-2"
                     >
                         Learn More
