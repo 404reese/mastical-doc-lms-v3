@@ -5,6 +5,8 @@ import { COURSES } from '@/data/courses';
 import CourseMainContent from '@/components/course-detail/CourseMainContent';
 import CourseSidebar from '@/components/course-detail/CourseSidebar';
 import Link from 'next/link';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 
 // Helper to generate metadata
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
@@ -33,6 +35,7 @@ const CourseDetailPage = async ({ params }: { params: Promise<{ slug: string }> 
 
     return (
         <div className="min-h-screen bg-[#FDFBF7F2]">
+            <Navbar />
             <div className="max-w-[1250px] mx-auto px-5 py-10">
                 {/* Breadcrumbs */}
                 <nav className="text-[13px] text-slate-400 mb-[30px] flex items-center gap-2">
@@ -48,6 +51,7 @@ const CourseDetailPage = async ({ params }: { params: Promise<{ slug: string }> 
                     <CourseSidebar course={course} className="hidden lg:block" />
                 </div>
             </div>
+            <Footer />
         </div>
     );
 };
