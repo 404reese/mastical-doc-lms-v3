@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Player | Academy of Classical Homeopathy</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --bg-color: #FDFBF7F2;
+            --primary-blue: #1F308B;
+            --text-dark: #1E293B;
+            --text-muted: #475569;
+            --white: #ffffff;
+            --border: #e2e8f0;
+            --accent-green: #22C55E;
+            --font-serif: 'Playfair Display', serif;
+            --font-sans: 'Inter', sans-serif;
+            --player-height: 580px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-color);
+            font-family: var(--font-sans);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow: hidden; /* Main window shouldn't scroll, inner columns should */
+        }
+
+        /* --- Header --- */
+        .header {
+            background: var(--white);
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+        }
+
+        .header-left { display: flex; align-items: center; gap: 20px; }
+        .back-btn { text-decoration: none; color: var(--text-muted); display: flex; align-items: center; gap: 8px; font-weight: 600; font-size: 13px; }
+        .logo-text { font-family: var(--font-serif); font-weight: 700; color: var(--primary-blue); font-size: 18px; }
+
+        /* --- Main Layout --- */
+        .player-grid {
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            height: calc(100vh - 70px);
+        }
+
+        /* --- Left Side: Video & Content --- */
+        .video-container {
+            overflow-y: auto;
+            background: var(--bg-color);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .video-player-wrapper {
+            width: 100%;
+            height: var(--player-height);
+            background: #000;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .mock-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.7;
+        }
+
+        .play-overlay {
+            position: absolute;
+            width: 85px;
+            height: 85px;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(12px);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: 0.3s;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+        .play-overlay:hover { transform: scale(1.1); background: rgba(255,255,255,0.25); }
+
+        .video-info-area {
+            padding: 45px;
+            max-width: 1000px;
+        }
+
+        .video-title-row h1 {
+            font-family: var(--font-serif);
+            font-size: 36px;
+            color: var(--primary-blue);
+            line-height: 1.2;
+            margin-bottom: 25px;
+        }
+
+        .instructor-tag {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+        .inst-avatar { width: 40px; height: 40px; border-radius: 50%; background: #e2e8f0; }
+        .inst-name { font-weight: 700; font-size: 14px; color: var(--text-dark); }
+
+        .actions-row {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .btn {
+            padding: 14px 28px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .btn-primary { background: var(--primary-blue); color: #fff; border: none; box-shadow: 0 4px 12px rgba(31, 48, 139, 0.2); }
+        .btn-outline { background: #fff; color: var(--primary-blue); border: 2px solid var(--primary-blue); }
+        .btn:hover { transform: translateY(-2px); opacity: 0.9; }
+
+        .video-description {
+            color: var(--text-muted);
+            border-top: 1px solid var(--border);
+            padding-top: 35px;
+        }
+
+        .video-description h3 {
+            font-family: var(--font-serif);
+            color: var(--text-dark);
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+
+        /* --- Right Sidebar: Progress & Accordion --- */
+        .curriculum-sidebar {
+            background: var(--white);
+            border-left: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* Sidebar Progress Bar */
+        .sidebar-progress-container {
+            padding: 25px;
+            background: #f8fafc;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .progress-bar-bg {
+            height: 8px;
+            background: #e2e8f0;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: var(--accent-green);
+            width: 65%; /* Current Progress */
+            border-radius: 10px;
+        }
+
+        .sidebar-header {
+            padding: 20px 25px;
+            border-bottom: 1px solid var(--border);
+        }
+        .sidebar-header h2 { font-family: var(--font-serif); font-size: 18px; color: var(--text-dark); }
+
+        .accordion-wrapper {
+            flex-grow: 1;
+            overflow-y: auto;
+        }
+
+        details { border-bottom: 1px solid #f1f5f9; }
+        summary {
+            padding: 20px 25px;
+            cursor: pointer;
+            list-style: none;
+            background: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 700;
+            font-size: 14px;
+            transition: 0.2s;
+        }
+        summary:hover { background: #fcfcfc; }
+        summary::-webkit-details-marker { display: none; }
+
+        .lesson-list { background: #fcfcfc; }
+
+        .lesson-item {
+            padding: 16px 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 13px;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: 0.2s;
+            border-bottom: 1px solid #f8f8f8;
+        }
+        .lesson-item:hover { background: #f1f5f9; color: var(--primary-blue); }
+        .lesson-item.active { 
+            background: #eff6ff; 
+            color: var(--primary-blue); 
+            font-weight: 700; 
+            border-left: 4px solid var(--primary-blue); 
+        }
+        
+        .lesson-item i { width: 16px; height: 16px; opacity: 0.5; }
+
+        /* --- Responsive --- */
+        @media (max-width: 1024px) {
+            body { overflow-y: auto; }
+            .player-grid { grid-template-columns: 1fr; height: auto; }
+            .curriculum-sidebar { height: 600px; border-left: none; border-top: 1px solid var(--border); }
+            .video-player-wrapper { height: 400px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="header-left">
+            <a href="#" class="back-btn"><i data-lucide="chevron-left"></i> Course Dashboard</a>
+            <span class="logo-text">Learning Player</span>
+        </div>
+        <div style="font-size: 12px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">
+            DHMS Diploma &bull; Module 1
+        </div>
+    </header>
+
+    <main class="player-grid">
+        
+        <!-- LEFT: VIDEO & DESCRIPTION -->
+        <div class="video-container">
+            <div class="video-player-wrapper">
+                <!-- Using high-quality placeholder image -->
+                <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=1400" class="mock-video" alt="Video Preview">
+                <div class="play-overlay">
+                    <i data-lucide="play" fill="#fff" stroke="none" style="width: 38px; height: 38px;"></i>
+                </div>
+            </div>
+
+            <div class="video-info-area">
+                <div class="video-title-row">
+                    <h1>Module 1.2: The Principles and Philosophy of Samuel Hahnemann</h1>
+                </div>
+
+                <div class="instructor-tag">
+                    <img src="https://i.pravatar.cc/100?u=dr_sarah" class="inst-avatar" alt="Instructor">
+                    <div class="inst-name">Dr. Sarah Mitchell, MD (Hom)</div>
+                </div>
+
+                <div class="actions-row">
+                    <button class="btn btn-primary"><i data-lucide="help-circle"></i> Ask Question</button>
+                    <a href="#" class="btn btn-outline"><i data-lucide="file-down"></i> Download PDF Notes</a>
+                </div>
+
+                <div class="video-description">
+                    <h3>Lesson Overview</h3>
+                    <p>In this session, we delve into the foundational laws that define classical homeopathy. We will break down the 'Law of Similars' and discuss how Hahnemann’s experiments with Cinchona bark led to the creation of the Organon of Medicine.</p>
+                    <p style="margin-top: 20px;">We will also cover the transition from 'Heroic Medicine' to a holistic, vitalistic approach. It is essential to understand the mindset of 18th-century Europe to appreciate the radical shift homeopathy introduced.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- RIGHT: SIDEBAR WITH PROGRESS & ACCORDION -->
+        <aside class="curriculum-sidebar">
+            
+            <!-- Progress Bar at the top -->
+            <div class="sidebar-progress-container">
+                <div class="progress-label">
+                    <span>Overall Course Progress</span>
+                    <span>65%</span>
+                </div>
+                <div class="progress-bar-bg">
+                    <div class="progress-bar-fill"></div>
+                </div>
+            </div>
+
+            <div class="sidebar-header">
+                <h2>Curriculum Content</h2>
+            </div>
+            
+            <div class="accordion-wrapper">
+                
+                <!-- Module 1 -->
+                <details open>
+                    <summary>
+                        Module 1: Foundations & History
+                        <i data-lucide="chevron-down" style="width: 14px;"></i>
+                    </summary>
+                    <div class="lesson-list">
+                        <div class="lesson-item"><i data-lucide="check-circle" style="color: var(--accent-green); opacity: 1;"></i> 1.1 Course Orientation</div>
+                        <div class="lesson-item active"><i data-lucide="play-circle"></i> 1.2 Hahnemann's Principles</div>
+                        <div class="lesson-item"><i data-lucide="book-text"></i> 1.3 Reading: The Organon §1-10</div>
+                        <div class="lesson-item"><i data-lucide="play-circle"></i> 1.4 The Concept of Vital Force</div>
+                    </div>
+                </details>
+
+                <!-- Module 2 -->
+                <details>
+                    <summary>
+                        Module 2: Basic Materia Medica
+                        <i data-lucide="chevron-down" style="width: 14px;"></i>
+                    </summary>
+                    <div class="lesson-list">
+                        <div class="lesson-item"><i data-lucide="play-circle"></i> 2.1 Intro to Provings</div>
+                        <div class="lesson-item"><i data-lucide="play-circle"></i> 2.2 Study of Aconite & Belladonna</div>
+                    </div>
+                </details>
+
+                <!-- Module 3 -->
+                <details>
+                    <summary>
+                        Module 3: Pharmacy
+                        <i data-lucide="lock" style="width: 14px; opacity: 0.5;"></i>
+                    </summary>
+                    <div class="lesson-list">
+                        <div class="lesson-item" style="opacity: 0.4;"><i data-lucide="lock"></i> 3.1 Dilution & Potentization</div>
+                    </div>
+                </details>
+
+            </div>
+        </aside>
+
+    </main>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>
