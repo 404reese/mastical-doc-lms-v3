@@ -63,7 +63,7 @@ const Testimonials = () => {
                     <span className="font-playfair text-[60px] text-[#C5A585] leading-none mb-5 font-bold block">
                         {testimonial.icon}
                     </span>
-                    <blockquote className="font-playfair italic text-[clamp(24px,4vw,44px)] text-[var(--blue-accent)] leading-tight mb-12 font-normal">
+                    <blockquote className="font-playfair text-[clamp(24px,4vw,44px)] text-[var(--blue-accent)] leading-tight mb-12 font-normal">
                         "{testimonial.quote}"
                     </blockquote>
                     <div className="flex flex-col items-center">
