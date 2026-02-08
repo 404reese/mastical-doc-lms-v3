@@ -10,20 +10,56 @@ interface FAQItem {
 
 const faqs: FAQItem[] = [
     {
-        question: "What are the entry requirements?",
-        answer: "We welcome applicants from diverse backgrounds. While academic excellence is valued, we prioritize passion, dedication, and a commitment to the healing arts. A personal interview and portfolio review are part of our holistic admissions process."
+        question: "Are certificates provided for all courses?",
+        answer: "Yes, upon successful completion of any course, you will receive a certificate of accomplishment."
     },
     {
-        question: "How long are the courses?",
-        answer: "Our programs vary in length to suit different needs. We offer intensive 3-month certifications, 1-year diploma programs, and flexible part-time options for working professionals. Each course is designed to provide comprehensive training."
+        question: "Are recordings provided?",
+        answer: "Yes, high-quality recordings of all live sessions are made available on our website for your review."
     },
     {
-        question: "Is financial aid available?",
-        answer: "Yes, we believe that education should be accessible to all deserving candidates. We offer a range of scholarships and flexible payment plans based on merit and financial need. Please contact our admissions office for more details."
+        question: "For how long are recordings accessible?",
+        answer: "Course recordings remain accessible for a period of 2 years, allowing you ample time to revisit and reinforce your learning."
     },
     {
-        question: "Can I visit the campus?",
-        answer: "Absolutely. We encourage prospective students to visit our campus, meet our faculty, and experience our learning environment firsthand. We hold regular open days and can also arrange private tours by appointment."
+        question: "How is course material accessed?",
+        answer: "All course materials, including lecture notes and session recordings, are conveniently accessible through our dedicated student portal on the website."
+    },
+    {
+        question: "What happens if a participant misses a live session?",
+        answer: "If you miss a live session, you can easily access the full recording and associated course materials on our website at your convenience."
+    },
+    {
+        question: "Are doubts and questions encouraged?",
+        answer: "Absolutely. We dedicate the final 15 minutes of every session to a Q&A with Dr. Gaurang Gaikwad. Additionally, you are welcome to email us any further questions."
+    },
+    {
+        question: "How can one enroll in courses?",
+        answer: "To enroll in a course, please send an email to gauranghg@gmail.com, and our admissions team will guide you through the registration process."
+    },
+    {
+        question: "What platforms are used for live sessions?",
+        answer: "All live sessions are conducted via Zoom to ensure a stable and interactive learning experience."
+    },
+    {
+        question: "Who teaches at the academy?",
+        answer: "Our faculty consists of distinguished experts, including renowned national and international practitioners."
+    },
+    {
+        question: "Are the courses live, recorded, or hybrid?",
+        answer: "Our courses generally follow a hybrid model, featuring a majority of live interactive lectures complemented by select pre-recorded sessions."
+    },
+    {
+        question: "Are the courses suitable for beginners as well as experienced practitioners?",
+        answer: "Yes, our curriculum is designed to accommodate all levels. We offer foundational courses for beginners as well as advanced modules for experienced practitioners, ensuring a comprehensive learning path from basic to advanced concepts."
+    },
+    {
+        question: "What kinds of courses does the academy offer?",
+        answer: "The Academy offers a wide range of courses covering key specialties such as Endocrinology, Ophthalmology, Pediatrics, Gynecology, and Geriatrics. We also provide advanced training in Miasms, Nosodes, Sarcodes, lesser-known remedies, and complex homeopathic concepts."
+    },
+    {
+        question: "Is the teaching more theoretical or clinically oriented?",
+        answer: "Our teaching is highly clinically oriented. We focus on clinical case presentations, offering detailed explanations of analysis, evaluation, remedy selection, and potency. This is complemented by in-depth theoretical teaching on advanced concepts and remedy differentiation."
     }
 ];
 
@@ -70,7 +106,7 @@ const FAQSection: React.FC = () => {
                             </button>
 
                             <div
-                                className={`transition-all duration-300 ease-in-out overflow-hidden ${openIndex === index ? 'max-h-[300px] opacity-100' : 'max-h-0 opacity-0'
+                                className={`transition-all duration-300 ease-in-out overflow-hidden ${openIndex === index ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'
                                     }`}
                             >
                                 <div className="p-[0_25px_30px_25px] text-[16px] leading-[1.6] text-[var(--para-color)] font-inter border-t border-dashed border-[rgba(0,0,0,0.05)] pt-[20px]">

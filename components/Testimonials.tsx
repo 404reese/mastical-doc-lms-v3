@@ -1,99 +1,73 @@
 "use client";
 
-import React, { useState, useEffect, useCallback } from "react";
+import React from 'react';
+import { Quote } from 'lucide-react';
 
-const testimonials = [
+const TESTIMONIALS = [
     {
-        quote:
-            "The humans of our family have now started to reap the benefit of the skill & dedication this institute possesses. They treat us as whole & complete entities.",
-        name: "Dr. Elena Rodriguez",
-        role: "ALUMNI & PRACTITIONER",
-        image:
-            "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&q=80&w=200&h=200",
-        icon: "\"",
+        quote: "Goin fantastically....thanks alot Dr gaurang sir for opting this kind of sessions....i learned alot and improved my day to day practice....hope we will continue this same nd improving ourself...your are really working hard nd we wish you a very good luck...keep it up and enthusiast us by sharing your knowledge and wonderfully treated successful cases..Thank you",
+        author: "Dr Sameer lohar",
     },
     {
-        quote:
-            "Finding an institute that views healing through a classical lens while maintaining modern clinical standards has completely transformed my practice.",
-        name: "Dr. James Smith",
-        role: "SENIOR CLINICIAN",
-        image:
-            "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&q=80&w=200&h=200",
-        icon: "\"",
+        quote: "Homeopaediatric  course  gave  me  many  insights  ... for  study  . It  helped  me  to  get  confidence  to  treat  needy  .Most  important  is  I  could  meet  so  many  great  homeopaths  ,all  across  world  .  so  , both  as  a  new  learner  and  as  a  human  being  also  ..I'm  growing , improving  ,evolving  ....Thanks  a  lot",
+        author: "Nisha Sagar Katkar",
     },
     {
-        quote:
-            "Deep immersion into miasms and complex nosodes provided the clinical breakthrough I was searching for. Highly recommended for dedicated learners.",
-        name: "Dr. Sarah Chen",
-        role: "PRACTITIONER",
-        image:
-            "https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&q=80&w=200&h=200",
-        icon: "\"",
+        quote: "This course is such an eye opener for me very grateful for gaurang sir who has created this ideas and stuffs got to know many doctors worldwide learnt many techniques,answers, methodology and so on..i am really looking forward to attend more classes from this amazing group.A big thank you sir and the team.",
+        author: "Subashine",
+    },
+    {
+        quote: "Class was extraordinary.. Really impressed with practical tips of Dr.Gaurang sir.. Identifying personality wth nook and corners of minute details.This we can't get from any book's.. Especially Blocked cases of Autism ,Auto immune disease etc..Miasm plays a major role..I can see the difference in my practice day to day.Looking forward for more courses..I am not satisfied with foreign lectures compared to Indian lectures..So much Impressed with Dr .Gaurang ..Becoming a fan for his knowledge..",
+        author: "Dr Aswini",
     },
 ];
 
 const Testimonials = () => {
-    const [activeIndex, setActiveIndex] = useState(0);
+    const [currentIndex, setCurrentIndex] = React.useState(0);
+    const [fade, setFade] = React.useState(true);
 
-    const nextSlide = useCallback(() => {
-        setActiveIndex((prev) => (prev + 1) % testimonials.length);
+    React.useEffect(() => {
+        const interval = setInterval(() => {
+            setFade(false);
+            setTimeout(() => {
+                setCurrentIndex((prev) => (prev + 2) % TESTIMONIALS.length);
+                setFade(true);
+            }, 500); // Wait for fade out
+        }, 5000); // Change every 5 seconds
+
+        return () => clearInterval(interval);
     }, []);
 
-    const goToSlide = (index: number) => {
-        setActiveIndex(index);
-    };
-
-    useEffect(() => {
-        const interval = setInterval(nextSlide, 7000);
-        return () => clearInterval(interval);
-    }, [nextSlide]);
+    // Get current 2 testimonials
+    const currentTestimonials = [
+        TESTIMONIALS[currentIndex % TESTIMONIALS.length],
+        TESTIMONIALS[(currentIndex + 1) % TESTIMONIALS.length]
+    ];
 
     return (
-        <section className="h-screen flex flex-col justify-center items-center text-center px-[5%] md:px-[10%] relative overflow-hidden">
-            {testimonials.map((testimonial, index) => (
-                <div
-                    key={index}
-                    className={`transition-opacity duration-1000 ease-in-out absolute w-full max-w-[900px] flex flex-col items-center ${index === activeIndex ? "opacity-100 z-10" : "opacity-0 z-0 pointer-events-none"
-                        }`}
-                    style={{
-                        transform: index === activeIndex ? "translateY(0)" : "translateY(10px)",
-                        transition: "opacity 1s ease-in-out, transform 1s ease-in-out"
-                    }}
-                >
-                    <span className="font-playfair text-[60px] text-[#C5A585] leading-none mb-5 font-bold block">
-                        {testimonial.icon}
-                    </span>
-                    <blockquote className="font-playfair text-[clamp(24px,4vw,44px)] text-[var(--blue-accent)] leading-tight mb-12 font-normal">
-                        "{testimonial.quote}"
-                    </blockquote>
-                    <div className="flex flex-col items-center">
-                        <img
-                            src={testimonial.image}
-                            alt={testimonial.name}
-                            className="w-[85px] h-[85px] rounded-full object-cover grayscale mb-5"
-                        />
-                        <h4 className="font-playfair text-lg font-bold text-[var(--title-black)] mb-2">
-                            {testimonial.name}
-                        </h4>
-                        <p className="font-inter text-[11px] font-bold uppercase tracking-[2px] text-[var(--blue-accent)]">
-                            {testimonial.role}
-                        </p>
-                    </div>
+        <section className="py-20 bg-[var(--bg-color)]">
+            <div className="max-w-[1000px] mx-auto px-5 text-center">
+                {/* Header */}
+                <div className="flex flex-col items-center mb-16">
+                    <Quote size={48} className="text-[#fce7d2] mb-4 fill-[#fce7d2]" />
+                    <h2 className="font-playfair font-normal text-[32px] tracking-[0.1em] text-[var(--blue-accent)] uppercase">
+                        Testimonials
+                    </h2>
                 </div>
-            ))}
 
-            {/* Dots */}
-            <div className="absolute bottom-10 flex gap-3 z-20">
-                {testimonials.map((_, index) => (
-                    <div
-                        key={index}
-                        onClick={() => goToSlide(index)}
-                        className={`w-2 h-2 rounded-full cursor-pointer transition-all duration-300 ${index === activeIndex
-                            ? "bg-[var(--blue-accent)] scale-125"
-                            : "bg-[#CBD5E1]"
-                            }`}
-                    />
-                ))}
+                {/* Grid - 2 Columns Side by Side */}
+                <div className={`grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16 text-left transition-opacity duration-500 ${fade ? 'opacity-100' : 'opacity-0'}`}>
+                    {currentTestimonials.map((testimonial, idx) => (
+                        <div key={idx}>
+                            <p className="font-inter italic text-[15px] leading-relaxed text-[var(--para-color)] mb-6 opacity-80 min-h-[80px]">
+                                "{testimonial.quote}"
+                            </p>
+                            <h4 className="font-bold text-sm text-[var(--title-black)]">
+                                — {testimonial.author}
+                            </h4>
+                        </div>
+                    ))}
+                </div>
             </div>
         </section>
     );

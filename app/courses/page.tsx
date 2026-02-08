@@ -7,6 +7,7 @@ import Footer from '@/components/Footer';
 import CourseCard from '@/components/CourseCard';
 import { COURSES, FILTERS } from '@/data/courses';
 import { Search, ChevronRight, Calendar } from 'lucide-react';
+import Testimonials from '@/components/Testimonials';
 
 export default function CoursesPage() {
   return (
@@ -37,7 +38,15 @@ export default function CoursesPage() {
 
         <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-10">
           {/* Sidebar */}
-          <aside className="space-y-[25px]">
+          <aside className="lg:sticky lg:top-12 h-fit space-y-[25px]">
+            {/* Filter Header */}
+            <div className="flex justify-between items-center">
+              <h2 className="font-playfair font-bold text-2xl text-[var(--blue-accent)]">Filters</h2>
+              <button className="text-sm font-medium text-slate-400 hover:text-[var(--blue-accent)] transition-colors">
+                All
+              </button>
+            </div>
+
             {/* Level Filter */}
             <div className="bg-white rounded-xl p-6 shadow-[var(--card-shadow)] border-t-[3px] border-[var(--blue-accent)]">
               <h3 className="font-playfair font-bold text-xl text-[var(--blue-accent)] mb-5">Level</h3>
@@ -51,11 +60,11 @@ export default function CoursesPage() {
               </div>
             </div>
 
-            {/* Topic Filter */}
+            {/* Language Filter */}
             <div className="bg-white rounded-xl p-6 shadow-[var(--card-shadow)] border-t-[3px] border-[var(--blue-accent)]">
-              <h3 className="font-playfair font-bold text-xl text-[var(--blue-accent)] mb-5">Topic</h3>
+              <h3 className="font-playfair font-bold text-xl text-[var(--blue-accent)] mb-5">Language</h3>
               <div className="flex flex-col gap-3">
-                {FILTERS.topic.map((item, idx) => (
+                {FILTERS.language.map((item, idx) => (
                   <label key={idx} className="flex items-center gap-2.5 text-sm font-medium text-[var(--title-black)] cursor-pointer hover:opacity-80 transition-opacity">
                     <input type="checkbox" className="w-4 h-4 accent-[var(--blue-accent)] rounded border-slate-300" />
                     {item}
@@ -92,7 +101,13 @@ export default function CoursesPage() {
                 <ChevronRight size={16} />
               </a>
             </div>
+
           </main>
+        </div>
+
+        {/* Testimonials Section */}
+        <div className="mt-20">
+          <Testimonials />
         </div>
       </div>
 

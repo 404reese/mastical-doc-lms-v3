@@ -1,39 +1,14 @@
-
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { CheckCircle2, Clock, GraduationCap, Wifi, Hospital, ArrowRight } from 'lucide-react';
+import { CheckCircle2, Clock, Globe } from 'lucide-react';
 import type { Course } from '@/data/courses';
 
 const CourseCard = ({ course }: { course: Course }) => {
-    const getBadgeColor = (color?: string) => {
-        switch (color) {
-            case 'certificate': return '#84cc16';
-            case 'specialization': return '#06b6d4';
-            case 'fellowship': return '#334155';
-            default: return 'var(--blue-accent)';
-        }
-    };
-
-    const getTypeIcon = (iconName: string) => {
-        switch (iconName) {
-            case 'clock': return <Clock size={14} />;
-            case 'graduation-cap': return <GraduationCap size={14} />;
-            case 'wifi': return <Wifi size={14} />;
-            case 'hospital': return <Hospital size={14} />;
-            default: return <GraduationCap size={14} />;
-        }
-    };
 
     return (
         <div className="bg-white rounded-xl overflow-hidden grid grid-cols-1 lg:grid-cols-[320px_1fr] shadow-sm hover:-translate-y-1 transition-transform duration-300 border border-slate-100">
             <div className="relative h-64 lg:h-full w-full">
-                <span
-                    className="absolute top-0 left-0 text-white px-4 py-1.5 text-[11px] font-bold uppercase tracking-wider z-10"
-                    style={{ backgroundColor: getBadgeColor(course.badgeColor) }}
-                >
-                    {course.badge}
-                </span>
                 <Image
                     src={course.image}
                     alt={course.title}
@@ -66,8 +41,8 @@ const CourseCard = ({ course }: { course: Course }) => {
                             {course.duration}
                         </div>
                         <div className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wide text-slate-500">
-                            {getTypeIcon(course.typeIcon)}
-                            {course.type}
+                            <Globe size={14} />
+                            {course.language}
                         </div>
                     </div>
 

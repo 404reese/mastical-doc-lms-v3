@@ -57,6 +57,7 @@ export interface Course {
     instructors?: Instructor[];
     pricing?: CoursePricing;
     includes?: CourseInclude[];
+    language?: string;
 }
 
 export const COURSES: Course[] = [
@@ -135,7 +136,8 @@ export const COURSES: Course[] = [
             { icon: "infinity", label: "Full lifetime access" },
             { icon: "smartphone", label: "Access on mobile and TV" },
             { icon: "award", label: "Certificate of completion" }
-        ]
+        ],
+        language: "English"
     },
     {
         id: 2,
@@ -164,7 +166,8 @@ export const COURSES: Course[] = [
             original: "$200",
             discount: "75% off",
             guarantee: "14-Day Money-Back Guarantee"
-        }
+        },
+        language: "English"
     },
     {
         id: 3,
@@ -188,7 +191,8 @@ export const COURSES: Course[] = [
             original: "$1,000",
             discount: "75% off",
             guarantee: "30-Day Money-Back Guarantee"
-        }
+        },
+        language: "English"
     },
     {
         id: 4,
@@ -212,11 +216,12 @@ export const COURSES: Course[] = [
             original: "$6,000",
             discount: "25% off",
             guarantee: "30-Day Money-Back Guarantee"
-        }
+        },
+        language: "English"
     }
 ];
 
 export const FILTERS = {
     level: ["Beginner", "Intermediate", "Advanced", "Post-Grad"],
-    topic: ["Materia Medica", "Clinical Practice", "Pediatrics", "Research"]
+    language: ["English", "Hindi", "French", "German", "Spanish"]
 };
